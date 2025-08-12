@@ -1,33 +1,52 @@
-<?html session_start(); ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>ALIF ANDIKA AMIN</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="images/Logo.png">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        #waterCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        /* Background gambar */
+        body {
+            background: url('images/qwer.jpg') center/cover no-repeat;
+        }
+    </style>
 </head>
-<body class="font-sans antialiased bg-cover bg-center bg-no-repeat" style="background-image: url('images/qwer.jpg');">
+<body class="font-sans antialiased">
+
+    <!-- Canvas untuk efek air -->
+    <canvas id="waterCanvas"></canvas>
 
     <!-- Navbar -->
-    <nav class="flex justify-between items-center p-4 bg-black text-white fixed top-0 w-full z-50">
+    <nav class="flex justify-between items-center p-4 bg-black bg-opacity-70 text-white fixed top-0 w-full z-50">
         <div class="flex items-center">
             <img src="images/Logo.png" class="w-10 mr-4" alt="Logo">
             <ul class="flex gap-6 text-sm relative">
                 <li><a href="tugas-akhir.html" class="hover:underline">Tugas Akhir</a></li>
 
-                <!-- Dropdown IOT Project -->
                 <li class="relative group">
                     <span class="cursor-pointer hover:underline"> Project</span>
                     <div class="absolute left-0 mt-2 bg-white text-black rounded shadow-lg invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 w-40 z-50">
                         <ul>
                             <li><a href="Obstacle-Avoidance-Robot.html" class="block px-4 py-2 hover:bg-gray-100">Obstacle Avoidance Robot</a></li>
                             <li><a href="perpustakaan.html" class="block px-4 py-2 hover:bg-gray-100">Perpustakaan</a></li>
-                            <li><a href="integrasi-data-pada-plc-untuk-platform-android.html" class="block px-4 py-2 hover:bg-gray-100">Integrasi Data Pada PLC untuk Platform Android</a></li>
+                            <li><a href="integ" class="block px-4 py-2 hover:bg-gray-100">Integrasi Data Pada PLC untuk Platform Android</a></li>
                             <li><a href="vfd.html" class="block px-4 py-2 hover:bg-gray-100">VFD</a></li>
                             <li><a href="autrocad.html" class="block px-4 py-2 hover:bg-gray-100">AUTOCAD</a></li>
-
                         </ul>
                     </div>
                 </li>
@@ -45,17 +64,13 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="h-screen w-full bg-black flex items-center pt-20 px-10">
+    <section class="h-screen w-full flex items-center pt-20 px-10">
         <div class="flex flex-col md:flex-row items-center gap-10 w-full">
-
-            <!-- Foto Alif -->
             <div class="flex-shrink-0">
                 <img src="images/dika.jpg" alt="Alif Andika Amin" class="w-[400px] h-[400px] object-cover rounded-2xl shadow-lg border-4 border-white">
             </div>
-
-            <!-- Deskripsi -->
             <div class="text-white max-w-2xl">
-                <h1 class="text-[60px] md:text-[80px] leading-none font-bold ">ALIF ANDIKA AMIN</h1>
+                <h1 class="text-[60px] md:text-[80px] leading-none font-bold">ALIF ANDIKA AMIN</h1>
                 <p class="text-lg leading-relaxed text-justify mt-6 inline-block">
                     A Computer Engineering graduate from Telkom University with a GPA of 3.6. Has internship experience
                     in the engineering field and has completed a BNSP-certified PLC training. Actively develops skills in
@@ -67,5 +82,52 @@
             </div>
         </div>
     </section>
+
+    <script>
+        const canvas = document.getElementById("waterCanvas");
+        const ctx = canvas.getContext("2d");
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        let waveOffset = 0;
+        function drawWater() {
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            ctx.strokeStyle = "rgba(255,255,255,0.25)";
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 3; i++) {
+                ctx.beginPath();
+                for (let x = 0; x < w; x++) {
+                    const y = Math.sin((x + waveOffset + i * 50) * 0.02) * 10 + h / 2 + i * 30;
+                    ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+            }
+
+            // Sparkle efek
+            for (let i = 0; i < 30; i++) {
+                const sparkleX = Math.random() * w;
+                const sparkleY = Math.random() * h;
+                const sparkleSize = Math.random() * 1.5;
+                ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+                ctx.beginPath();
+                ctx.arc(sparkleX, sparkleY, sparkleSize, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            waveOffset += 2;
+            requestAnimationFrame(drawWater);
+        }
+
+        drawWater();
+    </script>
 </body>
 </html>

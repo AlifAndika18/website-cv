@@ -1,0 +1,9 @@
+/* style.css */
+body {
+  font-family: sans-serif;
+  background-image: url('images/qwer.jpg'); /* ganti sesuai gambar kamu */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
