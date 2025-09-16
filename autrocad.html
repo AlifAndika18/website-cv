@@ -95,6 +95,43 @@ LOOP DRAWING POMPA AIR</p>
       dan mengurangi siklus ON/OFF pompa.</li>
 </ul>
 
+<b>Piping and Instrument Diagram</b>
+<p class="text-lg leading-relaxed text-justify mt-0">
+Gambar di bawah merupakan Piping and Instrumentation Diagram (P&ID) dari sistem pompa air konvensional yang digunakan untuk mengisi upper tank dari lower tank. Sistem ini bekerja dengan bantuan sensor level (level switch) yang dipasang pada kedua tangki, sehingga operasi pompa dapat dikendalikan secara otomatis. </p>
+<img src="images/p&id.png" 
+     alt="Alif Andika Amin" 
+     class="w-[800px] object-contain rounded-2xl shadow-lg border-4 border-white mt-6 inline-block">
+
+<p class="text-lg leading-relaxed text-justify mt-4">
+  <b>1. Komponen Utama</b>
+</p>
+<ul class="list-disc list-inside text-lg leading-relaxed text-justify">
+  <b>Lower Tank</b><br>
+  Tangki bawah berfungsi sebagai penampung utama air sebelum dialirkan ke tangki atas. <br>
+  <b>Level Switch NC (Normally Closed)
+</b><br>Sensor level ini ditempatkan pada lower tank. Fungsinya untuk mendeteksi ketersediaan air. Kondisi NC menandakan bahwa selama air masih tersedia, kontak dalam keadaan tertutup sehingga pompa dapat beroperasi. Jika air habis, kontak akan terbuka dan pompa berhenti bekerja untuk mencegah kerusakan akibat kekeringan (dry run).<br>
+    <b>Pump (P)</b>
+    <br>Pompa berfungsi untuk mengalirkan air dari lower tank menuju upper tank. Pompa bekerja berdasarkan sinyal dari level switch di upper tank dan lower tank.<br>
+    <b>Level Switch NO (Normally Open)
+</b><br>Sensor level ini ditempatkan pada upper tank. Kontak NO akan menutup apabila ketinggian air turun di bawah batas tertentu, sehingga memerintahkan pompa untuk menyala. Ketika air sudah penuh, kontak kembali terbuka untuk memutuskan aliran listrik ke pompa.<br>
+    <b>Indicator (I)</b>
+    <br>Simbol indikator digunakan sebagai penanda adanya kondisi tertentu, misalnya status operasi pompa atau status level air pada upper tank.<br>
+    <b>2. Prinsip Kerja Sistem</b>
+    <br>Sistem ini bekerja berdasarkan perbedaan level air antara lower tank dan upper tank.<br>
+    <li>Kondisi air upper tank rendah → level switch NO menutup, level switch NC pada lower tank juga menutup (karena air tersedia), sehingga pompa menyala dan air dipompa dari lower tank ke upper tank.</li>
+    <li>Kondisi air upper tank penuh → level switch NO kembali terbuka sehingga aliran listrik ke pompa terputus, pompa berhenti bekerja.</li>
+    <li>Kondisi air lower tank habis → level switch NC terbuka, pompa berhenti walaupun upper tank kosong, untuk mencegah kerusakan pompa akibat bekerja tanpa air.</li>
+    <b>Kelebihan sistem</b>
+    <li>Pengisian air upper tank berlangsung otomatis.</li>
+    <li>Pompa terlindungi dari kondisi dry run.</li>
+    <li>Operasional lebih efisien karena pompa hanya menyala saat diperlukan.</li>
+    <b>Kekurangan sistem</b>
+    <li>Membutuhkan dua tangki (lower tank dan upper tank), sehingga memerlukan ruang instalasi lebih besar.</li>
+    <li>Tekanan air di rumah bergantung pada ketinggian upper tank, bukan dari pompa secara langsung.</li>
+
+
+</ul>
+
 
     <button onclick="history.back()" class="bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded">
     ← Kembali
